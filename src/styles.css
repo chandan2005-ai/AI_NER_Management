@@ -1,0 +1,212 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * NER-SAFE design system — "operations centre" aesthetic.
+ * Dark graphite surfaces, signal-amber primary, hazard scale tokens.
+ * All colours are oklch semantic tokens. Never hardcode colours in components.
+ */
+
+@theme inline {
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  /* Hazard scale */
+  --color-risk-low: var(--risk-low);
+  --color-risk-moderate: var(--risk-moderate);
+  --color-risk-high: var(--risk-high);
+  --color-risk-veryhigh: var(--risk-veryhigh);
+  --color-risk-critical: var(--risk-critical);
+  --color-risk-foreground: var(--risk-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-panel: 0 1px 0 0 oklch(1 0 0 / 6%) inset, 0 18px 40px -24px oklch(0 0 0 / 70%);
+  --shadow-glow: 0 0 0 1px oklch(0.78 0.16 72 / 35%), 0 0 28px -6px oklch(0.78 0.16 72 / 45%);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.99 0.002 250);
+  --foreground: oklch(0.18 0.025 250);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.965 0.006 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.025 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.025 250);
+
+  --primary: oklch(0.52 0.18 245);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.01 250);
+  --secondary-foreground: oklch(0.2 0.025 250);
+  --muted: oklch(0.945 0.008 250);
+  --muted-foreground: oklch(0.46 0.02 250);
+  --accent: oklch(0.92 0.04 220);
+  --accent-foreground: oklch(0.2 0.03 250);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.89 0.012 250);
+  --input: oklch(0.88 0.012 250);
+  --ring: oklch(0.52 0.18 245);
+
+  --risk-low: oklch(0.58 0.17 148);
+  --risk-moderate: oklch(0.72 0.16 85);
+  --risk-high: oklch(0.64 0.19 45);
+  --risk-veryhigh: oklch(0.56 0.22 28);
+  --risk-critical: oklch(0.5 0.22 24);
+  --risk-foreground: oklch(0.99 0 0);
+
+  --chart-1: oklch(0.52 0.18 245);
+  --chart-2: oklch(0.58 0.17 148);
+  --chart-3: oklch(0.72 0.16 85);
+  --chart-4: oklch(0.56 0.22 28);
+  --chart-5: oklch(0.58 0.14 300);
+
+  --sidebar: oklch(0.985 0.004 250);
+  --sidebar-foreground: oklch(0.22 0.02 250);
+  --sidebar-primary: oklch(0.52 0.18 245);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.93 0.012 250);
+  --sidebar-accent-foreground: oklch(0.18 0.025 250);
+  --sidebar-border: oklch(0.89 0.012 250);
+  --sidebar-ring: oklch(0.52 0.18 245);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+}
+
+@utility panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility metric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@utility label-eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  color: var(--color-muted-foreground);
+}
+
+@utility grid-backdrop {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@keyframes pulse-live {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.82);
+  }
+}
+
+@utility live-dot {
+  animation: pulse-live 1.6s ease-in-out infinite;
+}
+
+/* Leaflet basemap treatment */
+.leaflet-container {
+  background: oklch(0.96 0.005 250);
+  font-family: var(--font-sans);
+}
+.leaflet-bar,
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #ffffff !important;
+  color: var(--color-foreground) !important;
+  border-color: var(--color-border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+.leaflet-bar a {
+  background: #ffffff !important;
+  color: var(--color-foreground) !important;
+  border-color: var(--color-border) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: var(--color-muted-foreground) !important;
+}
+.leaflet-control-attribution a {
+  color: var(--color-primary) !important;
+}
