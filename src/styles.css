@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -181,7 +180,7 @@
   }
 }
 
-@utility live-dot {
+.live-dot {
   animation: pulse-live 1.6s ease-in-out infinite;
 }
 
